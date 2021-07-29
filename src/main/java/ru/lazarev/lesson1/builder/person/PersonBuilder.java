@@ -4,12 +4,19 @@ import ru.lazarev.lesson1.builder.person.genderType.Gender;
 
 public interface PersonBuilder {
 
-  public void setMiddleName(String middleName) ;
-  public void setFirstName(String firstName);
-  public void setLastName(String lastName);
-  public void setCountry(String country);
-  public void setAddress(String address);
-  public void setGender(Gender gender);
-  public void setPhone(String phone);
-  public void setAge(int age);
+  void setMiddleName(String middleName);
+
+  void setFirstName(String firstName);
+
+  void setLastName(String lastName);
+
+  void setCountry(String country);
+
+  void setAddress(String address);
+
+  void setGender(Gender gender);
+
+  void setPhone(String phone);
+
+  void setAge(int age);
 }
