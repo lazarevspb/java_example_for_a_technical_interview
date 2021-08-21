@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8">
+  <title>student table</title>
+  <link rel="stylesheet" th:href="@{/style.css}">
+</head>
+<body>
+<h1>Course table</h1>
+
+<form>
+  <label for="titlePrefix" class="inline">Filter by title</label>
+  <input type="text" id="titlePrefix" class="inline" name="titlePrefix"
+         th:value="${param.titlePrefix}"/>
+  <button>Apply</button>
+
+</form>
+<table>
+  <thead>
+  <tr>
+    <th>Id</th>
+    <th>Name</th>
+    <th>age</th>
+    <th>Action</th>
+  </tr>
+  </thead>
+  <div>
+    <a>New student</a>
+  </div>
+  <tbody>
+
+  <tr th:unless="${students.empty}" th:each="student : ${students}">
+    <td th:text="${student.id}">1</td>
+
+    <td><a th:text="${student.name}" th:href="@{/student/{id}(id = ${student.id})}">Student name</a>
+    </td>
+    <td th:text="${student.age}">Student age</td>
+    <td>
+
+      <form class="inline" sec:authorize="hasRole('ADMIN')" th:method="delete"
+            th:action="@{/student/{id}(id = ${student.id})}">
+        <button type="submit">Delete</button>
+      </form>
+
+    </td>
+  </tr>
+
+  </tbody>
+</table>
+</body>
+</html>
